@@ -32,9 +32,21 @@ func main() {
 		for j := 1; j <= i; j++ {
 			mul := i*j
 			if mul > 9 {
-				fmt.Printf("%d * %d = %v ", i, j, mul)
+				fmt.Printf("%d * %d = %v ", j, i, mul)
 			} else {
-				fmt.Printf("%d * %d = %v  ", i, j, mul)
+				fmt.Printf("%d * %d = %v  ", j, i, mul)
+			}
+		}
+		fmt.Println()
+	}
+	// 倒序打印99乘法表
+	for i := 9; i > 0; i-- {
+		for j := 1; j <= i; j++ {
+			mul := i*j
+			if mul > 9 {
+				fmt.Printf("%d * %d = %v ", j, i, mul)
+			} else {
+				fmt.Printf("%d * %d = %v  ", j, i, mul)
 			}
 		}
 		fmt.Println()

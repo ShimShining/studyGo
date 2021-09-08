@@ -199,5 +199,186 @@ c2 := '1'
 c3 := "字"
 ```
 
+### 回顾day01
+
+#### Go命令
+
+`go build` : 编译go程序
+
+`go build -o "xx.exe"`: 编译成xx.exe文件
+
+`go run main.go`: 像脚本一样运行main.go文件
+
+`go install`:先编译后拷贝
+
+#### go语言基础语法
+
+存放Go源代码的文件名后缀是.go
+
+文件第一行:`package` 关键字声明包名
+
+```go
+// 单行注释
+
+/*
+
+多行注释
+
+*/
+```
+
+编译一个可执行文件,必须要声明一个main包,必须要有main函数,没有参数没有返回值,main函数是入口
+
+函数外的语句必须以关键字开头`var`,`const`
+
+函数内部定义的变量必须使用
+
+#### 变量
+
+声明方式有三种
+
+1. `var name string`
+2. `var name = "hello 好"`
+3. 函数内部专属: `name := "hello 王子"`
+
+匿名变量(哑元变量): 有些数据必须用变量接受,但是又不想使用,使用_接受
+
+#### 常量
+
+`const PI = 3.1415926`
+
+`const UserNotExistErr = 10000`
+
+iota: 实现枚举
+
+2个要点:
+
+1. iota在const关键字出现时被重置为0
+2. 每新增一行常量声明,iota累加1
+
+#### 流程控制
+
+##### if
+
+```go
+var age = 19
+if age > 18 {
+    fmt.Println(age)
+} else if age > 7 {
+     fmt.Println(age大于7)
+} else {
+     fmt.Println(age小于7)
+}
+```
+
+##### for
+
+1.  标准for循环
+
+   ```go
+   for i := 0; i < 10; i++ {
+       fmt.Println(i)
+   }
+   ```
+
+2. 循环变量声明在外面
+
+   ```go
+   var i = 0
+   for ; i < 10; i++ {
+       fmt.Println(i)
+   }
+   ```
+
+3. for结束语句在里面
+
+   ```go
+   var i = 0
+   for i < 10{
+       fmt.Println(i)
+       i++ 
+   }
+   ```
+
+4. 无限循环
+
+   ```go
+   for {
+       fmt.Println("无限循环")
+   }
+   ```
+
+5. for range
+
+   ```go
+   var s = "hello 这个世界"
+   for _, v := range s {
+       fmt.Println(v) // 打印出来是ASCII码
+       fmt.Printf("%d %c\n", i, v)
+   }
+   ```
+
+#### 基本数据类型
+
+整型
+
+​	无符号整型: `uint8`,`uint16`,`uint32`, `uint64`
+
+​	带符号整型:`int8`,`int16`,`int32`, `int64`
+
+​	`int`和`uint`: 具体是32位还是64位看操作系统
+
+​	`uintptr`: 表示指针
+
+其他进制
+
+​	go语言中无法直接定义二进制
+
+​	可以定义八进制和16进制
+
+```go
+var n1 = 0777 // 8进制
+var n2 = 0xff // 16 进制
+fmt.Printf("%o\n", n1)  // 打印八进制
+fmt.Printf("%x\n", n2)	// 打印十六进制
+```
 
 
+
+浮点型
+
+​	`float32`
+
+​	`float64`
+
+​	Go语言默认的浮点数是`float64`
+
+复数
+
+`complex128`和`complex64`
+
+布尔值
+
+​	true和false
+
+​	不能和其他的类型做转换
+
+字符串
+
+​	常用方法
+
+​	字符串不能修改
+
+byte和rune类型
+
+​	都属于类型别名
+
+字符串,字符,字节
+
+​	字符串: 双引号包裹的是字符串
+
+​	字符: 单引号包含的字符,单个字母,单个符号,单个文字
+
+​	字节: 1byte=8 bit
+
+​	go语言中字符串都是UTF-8编码,utf8编码中一个常用汉字一般占3个字节
